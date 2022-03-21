@@ -1,0 +1,16 @@
+.togle{
+    display: flex;
+    margin: 20px auto;
+    padding: 15px;
+
+}
+
+
+div{
+    width: 150px;
+    display: flex;
+    background-color: #FFF;
+    margin: 20px auto;
+    justify-content: center;
+    border: 2px solid black;
+}
