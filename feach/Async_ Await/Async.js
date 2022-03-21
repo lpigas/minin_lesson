@@ -48,16 +48,18 @@ async function fetchAsyncTodos(){
         console.log("_______________________")
     }
 }
-let i=0;
+let i=1;
 document.querySelector('h1').addEventListener('click', () =>{
         fetchAsyncTodos().then(() => document.querySelector('h1').innerHTML = 'New name')
         .then(()=>{
             document.querySelector('div').textContent = x[0].title.toUpperCase();
+            document.body.style.backgroundColor = `#${random()}`
         })
         .then(() =>{
            var interval = setInterval(() =>{
                document.body.style.backgroundColor = `#${random()}`
-               document.body.style.fontSize = `${random2()}px`
+               document.querySelector('h1').style.fontSize = `${random2()}px`
+               document.querySelector('div').style.fontSize = `${random2()}px`
                i++
                document.querySelector('div').innerHTML = x[i].title.toUpperCase()
 
