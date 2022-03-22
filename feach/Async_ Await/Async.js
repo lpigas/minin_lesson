@@ -8,7 +8,7 @@ const delay = ms =>{
 //     console.log('vasilii')
 // }) использование промиса - получение ответа от сервера  с задержкой
 
-const newa = []
+
 const url = 'https://jsonplaceholder.typicode.com/todos';// адресс запроса
 
 // function fechTodos() { // функция для дополнительной задержки после обращенния на сервер
