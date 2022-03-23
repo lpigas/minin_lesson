@@ -1,0 +1,6 @@
+[
+    {"id": 12001, "name": "Elena", "job": "home maker", "age": 25},
+    {"id": 12011, "name": "Viktor", "job": "Tester", "age": 29},
+    {"id": 12021, "name": "Ihor", "job": "Killer", "age": 30},
+    {"id": 12031, "name": "Anna", "job": "Student", "age": 19}
+]
