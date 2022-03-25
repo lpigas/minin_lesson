@@ -5,14 +5,14 @@ body{
 .inputFind{
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 56px;
     margin: auto;
     justify-content: center;
     margin-top: 10%;
 }
 form{
     display: flex;
-    width: 175px;
+    width: 200px;
     
 
 }
@@ -28,11 +28,13 @@ form{
     margin-left: 3px;
 }
 .reset{
-    margin-top: 5px;
+    display: flex;
+    height: 79%;
 }
 select{
     margin-right: 2px;
-    height: 44%;
+    height: 45px;
+    width: 150px;
 
 }
 .table{
@@ -74,4 +76,22 @@ select{
     margin: 0px;
     padding: 0px;
     margin-bottom: 3%;
+}
+.btn__find{
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+}
+.input__find{
+    display: flex;
+}
+#btnFind{
+    width:84px;
+    height: 42px;
+    
+    /* margin-left: 12%; */
+
+    justify-content: center;
+    align-items: center;
+
 }
