@@ -1,3 +1,4 @@
+
 body{
     font-size: 20px;
     background-color: aquamarine;
@@ -102,6 +103,36 @@ select{
     padding-left: -3px;
     opacity: 0.76;
 }
+.table__firstLine:active{
+    background-color: #199;
+    opacity: 1;
+}
 .second{
     margin: 0px 0px 0px 0px;
+}
+
+.fullInfo{
+    width: 98%;
+    height: 500px;
+    display: flex;
+    font-size: 55px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    border: 15px solid black;
+    opacity: 0.75;
+    border-radius: 55px;
+    background-color: palegreen;
+}
+.closeBtn{
+    display: flex;
+    width: 85px;
+    justify-content: center;
+
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 6px;
+}
+.nonactive{
+    display: none;
 }

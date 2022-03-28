@@ -2,7 +2,7 @@
     {"id": 12001, "name": "Elena", "job": "home maker", "age": 25},
     {"id": 12011, "name": "Viktor", "job": "Tester", "age": 29},
     {"id": 12021, "name": "Ihor", "job": "Killer", "age": 30},
-    {"id": 12031, "name": "Anna", "job": "Student", "age": 27},
+    {"id": 12031, "name": "Anna", "job": "Student", "age": 24},
     {"id": 12001, "name": "Olja", "job": "Junior of Front - end", "age": 25},
     {"id": 12051, "name": "Artem", "job": "Trainer", "age": 30},
     {"id": 12001, "name": "Oleg", "job": "Sorter", "age": 26}

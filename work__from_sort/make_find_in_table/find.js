@@ -59,8 +59,6 @@ function addPersondata() {
 }
 addPersondata(url)
 
-
-table.classList.add('active')
 function changeActive(){
   for (let i = 3; i < tbodyNew.length; i++){
     if (tbodyNew[i].classList.contains('active')){
@@ -136,23 +134,43 @@ btnFind.onclick = (() =>{
   })
 
 
-const indexArray = new Proxy(Array,{
-  construct(target,[args]){
-      x = []
+  const indexArray = new Proxy(Array,{
+    construct(target,[args]){
+        x = []
+        const index = {}
+        args.forEach(el => {
+            if (el.id == inputinput__find.value)
+            x.push(el)
+            index[el.id] = el
+            return x
+        });
+        return new Proxy (new target(...args), {
+            get (arr, prop){
+                switch(prop){
+                    case 'findById': return id =>{ // прототип поиска по и
+                        return x
+                    }
+                    default: return arr[prop]
+                }
+            }
+        })
+    }
+  })
+  
+  const nameArray = new Proxy(Array,{
+    construct(target,[args]){
       const index = {}
       args.forEach(el => {
-          if (el.id == inputinput__find.value){
-            x.push(el)
-          } 
-          
-          index[el.id] = el;
-          
+        if (el.name == inputinput__find.value)
+          x = []
+          x.push(el)
+          index[el.name] = el
           return x
       });
       return new Proxy (new target(...args), {
           get (arr, prop){
               switch(prop){
-                  case 'findById': return id =>{ // прототип поиска по и
+                  case 'findByName': return id =>{ // прототип поиска по и
                       return x
                   }
                   default: return arr[prop]
@@ -160,85 +178,60 @@ const indexArray = new Proxy(Array,{
           }
       })
   }
-})
-
-const nameArray = new Proxy(Array,{
-  construct(target,[args]){
-    const index = {}
-    args.forEach(el => {
-      if (el.name == inputinput__find.value)
-        x = []
-        x.push(el)
-        index[el.name] = el
-        return x
-    });
-    return new Proxy (new target(...args), {
-        get (arr, prop){
-            switch(prop){
-                case 'findByName': return id =>{ // прототип поиска по и
-                    return x
-                }
-                default: return arr[prop]
-            }
-        }
-    })
-}
-})
-const jobArray = new Proxy(Array,{
-  construct(target,[args]){
-    x = []
-    const index = {}
-    args.forEach(el => {
-        if (el.job == inputinput__find.value)
-        x.push(el)
-        index[el.job] = el
-        return x
-    });
-    return new Proxy (new target(...args), {
-        get (arr, prop){
-            switch(prop){
-                case 'findByJob': return id =>{ // прототип поиска по и
-                    return x
-                }
-                default: return arr[prop]
-            }
-        }
-    })
-}
-})
-
-const ageArray = new Proxy(Array,{
-  construct(target,[args]){
-    x = []
-    const index = {}
-    args.forEach(el => {
-        if (el.age == inputinput__find.value)
-        x.push(el)
-        index[el.age] = el
-        return x
-    });
-    return new Proxy (new target(...args), {
-        get (arr, prop){
-            switch(prop){
-                case 'findByAge': return id =>{ // прототип поиска по и
-                    return x
-                }
-                default: return arr[prop]
-            }
-        }
-    })
-}
-})
-
-
-btnReset.addEventListener('click', () => {
-  newUrl = [];
-  x = [];
-  for(let i = 3; i < tbodyNew.length; i++){
-    while (tbodyNew.length > 3){
-      tbodyNew[i].remove()
-    }}
-    addPersondata(url)
-    changeActiveStatus = '';
-    changeActiveStatus2 = '';
-})
+  })
+  const jobArray = new Proxy(Array,{
+    construct(target,[args]){
+      x = []
+      const index = {}
+      args.forEach(el => {
+          if (el.job == inputinput__find.value)
+          x.push(el)
+          index[el.job] = el
+          return x
+      });
+      return new Proxy (new target(...args), {
+          get (arr, prop){
+              switch(prop){
+                  case 'findByJob': return id =>{ // прототип поиска по и
+                      return x
+                  }
+                  default: return arr[prop]
+              }
+          }
+      })
+  }
+  })
+  
+  const ageArray = new Proxy(Array,{
+    construct(target,[args]){
+      x = []
+      const index = {}
+      args.forEach(el => {
+          if (el.age == inputinput__find.value)
+          x.push(el)
+          index[el.age] = el
+          return x
+      });
+      return new Proxy (new target(...args), {
+          get (arr, prop){
+              switch(prop){
+                  case 'findByAge': return id =>{ // прототип поиска по и
+                      return x
+                  }
+                  default: return arr[prop]
+              }
+          }
+      })
+  }
+  })
+  
+  
+  btnReset.addEventListener('click', () => {
+    newUrl = [];
+    x = [];
+    for(let i = 3; i < tbodyNew.length; i++){
+      while (tbodyNew.length > 3){
+        tbodyNew[i].remove()
+      }}
+      addPersondata(url)
+  })

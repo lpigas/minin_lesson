@@ -8,6 +8,8 @@ let changeFormValue = '';
 let newUrl = [];
 let x = []
 const tbodyNew = document.querySelector('tbody').children
+const btnClose = document.querySelector('.closeBtn')
+
 
 function addData(text, deth = 0) {
   newUrl = []
@@ -17,7 +19,7 @@ function addData(text, deth = 0) {
       if (deth === 1){
         makeTr.classList.add('table__firstLine', 'nonactive')
       } else {
-        makeTr.classList.add('table__firstLine', 'active')
+        makeTr.classList.add('table__firstLine', 'active', 'ded')
       }
       
 
@@ -61,11 +63,11 @@ function addPersondata() {
 addPersondata(url)
 
 
-table.classList.add('active')
+
 function changeActive(){
   for (let i = 3; i < tbodyNew.length; i++){
     if (tbodyNew[i].classList.contains('active')){
-      console.log(tbodyNew[i])
+
       tbodyNew[i].classList.remove('active')
       tbodyNew[i].classList.add('nonactive')
     } else {
@@ -98,6 +100,38 @@ function find() {
 let changeActiveStatus ='' ;
 let changeActiveStatus2 = '' ;
 let y = 0
+
+function openFullData(data){
+  for(let i = 0; i < document.body.children.length; i++){
+    document.body.children[i].classList.add('nonactive')
+  }
+  const div = document.createElement('div')
+  div.classList.add('fullInfo')
+  console.log(newUrl[data])
+  div.innerHTML = newUrl[data].fullInfo
+  document.body.appendChild(div)
+  
+}
+
+function closeData() {
+  for(let i = 0; i < document.body.children.length; i++){
+    document.body.children.classList.remove('nonactive')
+  }
+  document.querySelector('.fullInfo').remove();
+  btnClose.classList.add('nonactive')
+}
+
+  
+ setTimeout(() => {
+   const firstLine = document.querySelectorAll('.active')
+   for(let i = 0; i < firstLine.length; i++){
+    firstLine[i].addEventListener('click',()=>{
+      openFullData(i)
+      btnClose.classList.remove('nonactive')
+    }
+    )}
+ }, 100);
+
 btnFind.onclick = (() =>{
   if ((changeActiveStatus !== changeFormValue || changeActiveStatus2 !== inputinput__find.value)){
     for(let i = 3; i < tbodyNew.length; i++){
@@ -110,24 +144,38 @@ btnFind.onclick = (() =>{
     addData(x,1)
     setTimeout(() => {
       changeActive()
+      setTimeout(() => {
+        const firstLine = document.querySelectorAll('.active')
+        for(let i = 0; i < firstLine.length; i++){
+          console.log(firstLine.length)
+         firstLine[i].addEventListener('click',()=>{
+           openFullData(i)
+           btnClose.classList.remove('nonactive')}
+           
+         )}
+      }, 100);
+      
     }, 50);
 }
 changeActiveStatus = (changeFormValue);
 changeActiveStatus2 = inputinput__find.value;
   })
+
+
   const indexArray = new Proxy(Array,{
     construct(target,[args]){
         x = []
         const index = {}
         args.forEach(el => {
+
           if (el.id.toString().includes(inputinput__find.value) ||
           el.name.toString().includes(inputinput__find.value) ||
           el.job.toString().includes(inputinput__find.value) ||
-          el.age.toString().includes(inputinput__find.value))
+          el.age.toString().includes(inputinput__find.value) ||
+          el.fullInfo.toString().includes(inputinput__find.value) )
           x.push(el)
           index[el.id] = el
           return x
-          console.log(x)
         });
         return new Proxy (new target(...args), {
             get (arr, prop){
@@ -152,4 +200,14 @@ changeActiveStatus2 = inputinput__find.value;
         tbodyNew[i].remove()
       }}
       addPersondata(url)
+  })
+
+btnClose.addEventListener('click', () =>{
+  
+  document.querySelector('.fullInfo').remove();
+    for(let i = 0; i < document.body.children.length; i++){
+      document.body.children[i].classList.remove('nonactive')
+    }
+    btnClose.classList.add('nonactive')
+
   })
