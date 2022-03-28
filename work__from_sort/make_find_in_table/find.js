@@ -64,7 +64,7 @@ table.classList.add('active')
 function changeActive(){
   for (let i = 3; i < tbodyNew.length; i++){
     if (tbodyNew[i].classList.contains('active')){
-      console.log(tbodyNew[i])
+      
       tbodyNew[i].classList.remove('active')
       tbodyNew[i].classList.add('nonactive')
     } else {
@@ -99,52 +99,37 @@ function find() {
   if (changeFormValue === 'Id'){
     userData = new indexArray(newUrl)
     console.log(userData.findById(inputinput__find.value))
-    } else if(changeFormValue === 'Name'  ) {
+    y++
+    } else if(changeFormValue === 'Name') {
       userData = new nameArray(newUrl)
       console.log(userData.findByName(inputinput__find.value))
+      y++
     } else if(changeFormValue === 'Job') {
       userData = new jobArray(newUrl)
       console.log(userData.findByJob(inputinput__find.value))
+      y++
     } else  if(changeFormValue === 'Age'){
       userData = new ageArray(newUrl)
       console.log(userData.findByAge(inputinput__find.value))
+      y++
     }
 }
 let changeActiveStatus ='' ;
 let changeActiveStatus2 = '' ;
 let y = 0
 btnFind.onclick = (() =>{
-  y++;
-    find()
-    
-
-    if (changeActiveStatus !== changeFormValue || changeActiveStatus2 !== inputinput__find.value){
-      table.classList.remove('active')
-      
-      changeActive()
-    } else {
-      table.classList.add('active')
-      y--
-      newUrl = [];
-    }
-    addData(x)
-    
-    if (y > 1){
-      for(let i = 3; i < tbodyNew.length; i++){
-        while (tbodyNew.length > 3){
-          tbodyNew[i].remove()
+    if ((changeActiveStatus !== changeFormValue || changeActiveStatus2 !== inputinput__find.value)){
+        for(let i = 3; i < tbodyNew.length; i++){
+          while (tbodyNew.length > 3){
+            tbodyNew[i].remove()
+          }
         }
-        
-        
-      }
-      // newUrl = [];
-      addPersondata(url)
-      find();
-      addData(x,1)
-      setTimeout(() => {
-        changeActive()
-      }, 100);
-     
+        addPersondata(url)
+        find();
+        addData(x,1)
+        setTimeout(() => {
+          changeActive()
+        }, 50);
     }
     changeActiveStatus = (changeFormValue);
     changeActiveStatus2 = inputinput__find.value;
@@ -156,9 +141,12 @@ const indexArray = new Proxy(Array,{
       x = []
       const index = {}
       args.forEach(el => {
-          if (el.id == inputinput__find.value)
-          x.push(el)
-          index[el.id] = el
+          if (el.id == inputinput__find.value){
+            x.push(el)
+          } 
+          
+          index[el.id] = el;
+          
           return x
       });
       return new Proxy (new target(...args), {
@@ -251,4 +239,6 @@ btnReset.addEventListener('click', () => {
       tbodyNew[i].remove()
     }}
     addPersondata(url)
+    changeActiveStatus = '';
+    changeActiveStatus2 = '';
 })
