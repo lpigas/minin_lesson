@@ -77,17 +77,6 @@ function changeActive(){
   }
 }
 
-function changesActive(){
-  
-  for (let i = tbodyNew.length - 1; i > 3; i--){
-    console.log(tbodyNew[i])
-    while(i > 3 && tbodyNew[i].classList.contains('active')){
-      tbodyNew[i].remove()
-
-    }
-  }
-}
-
 
 function find() {
   let userData;
@@ -111,14 +100,6 @@ function openFullData(data){
   div.innerHTML = newUrl[data].fullInfo
   document.body.appendChild(div)
   
-}
-
-function closeData() {
-  for(let i = 0; i < document.body.children.length; i++){
-    document.body.children.classList.remove('nonactive')
-  }
-  document.querySelector('.fullInfo').remove();
-  btnClose.classList.add('nonactive')
 }
 
   
