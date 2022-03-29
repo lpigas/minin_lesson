@@ -1,0 +1,9 @@
+[
+    {"id": 12001, "name": "Elena", "job": "home maker", "age": 25, "fullInfo" :"Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, id voluptas eligendi velit adipisci praesentium modi incidunt cum pariatur amet quibusdam eum maiores nemo vitae soluta quasi quia dolores sequi."},
+    {"id": 12011, "name": "Viktor", "job": "Tester", "age": 29, "fullInfo" : "leave and die"},
+    {"id": 12021, "name": "Ihor", "job": "Killer", "age": 30, "fullInfo" : "Not bad"},
+    {"id": 12031, "name": "Anna", "job": "Student", "age": 24, "fullInfo" :"Odessa city leve"},
+    {"id": 12001, "name": "Olja", "job": "Junior of Front - end", "age": 25, "fullInfo" :" fsAsfafsasf"},
+    {"id": 12051, "name": "Artem", "job": "Trainer", "age": 30, "fullInfo" :" lorem 324"},
+    {"id": 12001, "name": "Oleg", "job": "Sorter", "age": 26, "fullInfo" :"vesnucrka id: 12001, name: Oleg, job: Sorter, age: 26,"}
+]
